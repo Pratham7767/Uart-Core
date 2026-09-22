@@ -4,17 +4,8 @@ A configurable UART transmitter and receiver in Verilog, with a
 self-checking [cocotb](https://www.cocotb.org/) testbench that uses
 randomized stimulus and a functional coverage model.
 
-```
-              ┌───────────────┐
-  divisor ───▶│   baud_gen     │── tick (16x baud) ──┬────────────┐
-              └───────────────┘                      │            │
-                                                      ▼            ▼
-  tx_data ──▶┌──────────┐                        ┌──────────┐
-  tx_start ─▶│ uart_tx   │──▶ tx  ────────────────│ uart_rx   │──▶ rx_data
-             │  FSM      │                        │  FSM      │──▶ rx_valid
-             └──────────┘     rx ◀────────────────└──────────┘──▶ parity_err
-                                                                  └▶ frame_err
-```
+![uart-core microarchitecture](docs/microarchitecture.svg)
+
 
 ## Features
 
